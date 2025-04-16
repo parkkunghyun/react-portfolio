@@ -38,12 +38,19 @@ const Header = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 1.5, duration: 1 }}
         >
-          <a
+           <a
             target="_blank"
-            href="https://drive.google.com/file/d/12bRPVUIYxFPb7fGEK3EWHOsBelOJMdpW/view?usp=sharing"
+            href="/resume.pdf"
             className="px-6 py-2 rounded-full border border-gray-900 text-gray-900 font-semibold hover:bg-gray-100 transition"
           >
-            이력서 다운로드
+            이력서
+          </a>
+          <a
+            target="_blank"
+            href="/port.pdf"
+            className="flex items-center gap-2 px-6 py-2 rounded-full bg-black text-white font-semibold hover:bg-gray-800 transition"
+          >
+            포트폴리오
           </a>
           <a
             target="_blank"

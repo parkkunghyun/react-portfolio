@@ -4,7 +4,7 @@ import TitleImg from '../assets/images/img2.jpeg';
 
 const Footer = () => {
   return (
-    <section className="flex bg-[#d7d5d3] flex-col items-center justify-center min-h-screen text-center gap-10">
+    <section className="flex bg-white flex-col items-center justify-center min-h-screen text-center gap-10">
       <motion.img
         src={TitleImg}
         alt="logo"

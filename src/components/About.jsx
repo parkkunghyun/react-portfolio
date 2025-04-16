@@ -1,100 +1,92 @@
-import React from 'react'
-import { motion } from 'framer-motion'
+import React from 'react';
+import { motion } from 'framer-motion';
+import TitleImg from '../assets/images/img1.jpeg';
 
-const awards = [
-  {
-    year: "2024",
-    items: [
-      "전남대학교 지역사회혁신 AI 클라우드 경진대회 은상",
-      "지역문제 해결 창업아이디어 공모전 대상",
-      "조선대학교 IT 페스티벌 아이디어 대회 금상",
-      "전국 대학생 SW 창업 아이디어톤 장려상"
-    ]
+const containerVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      delayChildren: 0.3,
+      staggerChildren: 0.3,
+    },
   },
-  {
-    year: "2023",
-    items: [
-      "Wemade 블록체인 해커톤 우수상",
-      "조선대학교 알고리즘 대회 금상",
-      "어부바 창업 아이디어 경진대회 우수상"
-    ]
-  },
-  {
-    year: "2021",
-    items: [
-      "전남 디지털 격차 아이디어 공모전 장려상",
-      "Google AI 융합혁신 기술대회 인기상"
-    ]
-  }
-]
+};
 
-const skills = [
-  { title: "Frontend", desc: "React, Next.js, TypeScript, Tailwind" },
-  { title: "Backend", desc: "Node.js, Express" },
-  { title: "Database", desc: "MongoDB, MySQL, Postgres" },
-  { title: "State Management", desc: "Redux, RTK Query, React-Query, Recoil" },
-  { title: "Collaboration", desc: "Git, Figma" },
-  { title: "Cloud", desc: "GCP, AWS" },
-  { title: "ETC", desc: "Supabase, Firebase, Vercel, Render" },
-]
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0 },
+};
 
 const About = () => {
   return (
-    <section className='w-full bg-[#d7d5d3] py-0 px-4 flex flex-col gap-10'>
+    <section className="w-full py-20 px-6 md:px-12 bg-white">
+       <motion.h1
+        className="text-3xl md:text-4xl font-extrabold text-center text-gray-900 mb-16"
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.6 }}
+      >
+        👋 자기 소개서
+      </motion.h1>
 
-      <h2 className='text-4xl font-bold text-center'>About Me</h2>
-      <p className='text-center text-gray-600 mt-10'>
-        학교와 외부 교육에서 배운 이론을 실제 서비스에 적용하고, 결과를 검증하기 위해 다양한 대회에 참가했습니다.
-      </p>
-
-      <div className='flex flex-col md:flex-row justify-center gap-10'>
-
-        {/* Left - 수상 */}
+      <motion.div
+        className="max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-16"
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.3 }}
+        variants={containerVariants}
+      >
+        {/* Left: Image */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className='flex-1 max-w-2xl bg-white p-6 rounded-xl shadow-md'
+          variants={itemVariants}
+          whileHover={{ scale: 1.03 }}
+          transition={{ type: 'spring', stiffness: 100 }}
+          className="w-full md:w-1/2"
         >
-          <h3 className='text-2xl font-semibold mb-4'>🏆 Awards</h3>
-          {awards.map((award) => (
-            <div key={award.year} className='mb-4'>
-              <p className='font-bold text-indigo-600'>{award.year}</p>
-              <ul className='list-disc ml-5 text-gray-700 text-sm'>
-                {award.items.map((item, idx) => (
-                  <li key={idx}>{item}</li>
-                ))}
-              </ul>
-            </div>
-          ))}
+          <img
+            src={TitleImg}
+            alt="About"
+            className="rounded-2xl shadow-2xl object-cover w-full h-auto"
+          />
         </motion.div>
 
-        {/* Right - 스킬 */}
+        {/* Right: Text */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className='flex-1 bg-white max-w-2xl p-8 rounded-2xl shadow-xl border border-gray-200'
+          className="w-full md:w-1/2 space-y-10"
+          variants={containerVariants}
         >
-          <h3 className='text-3xl font-extrabold mb-6 text-gray-900 flex items-center gap-2'>
-            🛠️ Skills
-          </h3>
+          <motion.div variants={itemVariants}>
+            <h3 className="text-2xl font-bold text-gray-900 mb-2">
+              사용자 경험을 고민하는 개발자입니다.
+            </h3>
+            <p className="text-gray-700 text-lg leading-relaxed">
+              단순히 예쁜 UI를 만드는 것을 넘어, <strong>사용자가 직관적으로 이해하고 쉽게 사용할 수 있는 경험</strong>을 설계하는 데 집중합니다. 디자인과 기능 사이의 균형을 고민하며, 작은 인터랙션 하나도 사용자 입장에서 생각하고 개선하는 것을 좋아합니다.
+            </p>
+          </motion.div>
 
-          <ul className='grid grid-cols-2 gap-x-6 gap-y-4 text-[15px] text-gray-700'>
-            {skills.map((skill, idx) => (
-              <li key={idx} className='flex flex-col'>
-                <span className='font-bold text-gray-900 mb-1'>{skill.title}</span>
-                <span className='text-gray-600'>{skill.desc}</span>
-              </li>
-            ))}
-          </ul>
+          <motion.div variants={itemVariants}>
+            <h3 className="text-2xl font-bold text-gray-900 mb-2">
+              AI와 클라우드를 적극적으로 활용합니다.
+            </h3>
+            <p className="text-gray-700 text-lg leading-relaxed">
+              "프론트엔드 개발자가 AI를?"이라고 생각할 수 있지만, 이제는 <strong>AI를 활용하지 않는 서비스가 드물 정도로 보편화</strong>되었습니다. 저는 이러한 흐름에 발맞춰 GCP와 AI 기술을 적극 도입하여, 반려견 감정 분석 서비스, 나만의 챗봇 도우미, 실시간 번역 서비스 등을 직접 기획하고 개발해 보았습니다. <strong>프론트엔드와 AI의 접점</strong>에서 새로운 가치를 만들어가는 것에 흥미를 느낍니다.
+            </p>
+          </motion.div>
+
+          <motion.div variants={itemVariants}>
+            <h3 className="text-2xl font-bold text-gray-900 mb-2">
+              다양한 환경에서 커뮤니케이션을 리드해왔습니다.
+            </h3>
+            <p className="text-gray-700 text-lg leading-relaxed">
+              10회 이상 대회에 참가하며 <strong>90% 이상 팀 리더 역할</strong>을 맡아왔습니다. 프로젝트를 이끌며 항상 “<strong>왜 그렇게 생각했는지</strong>”, “<strong>어떻게 더 나아질 수 있을지</strong>”를 팀원들과 함께 고민했습니다. 서로의 의견을 존중하며 능동적으로 소통한 결과, 매년 2건 이상의 수상, 총 <strong>9개의 상</strong>을 수상할 수 있었습니다.
+            </p>
+          </motion.div>
         </motion.div>
-
-
-      </div>
-
+      </motion.div>
     </section>
-  )
-}
+  );
+};
 
-export default About
+export default About;

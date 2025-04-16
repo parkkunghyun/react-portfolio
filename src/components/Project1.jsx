@@ -3,7 +3,7 @@ import book from '../assets/images/book1.png';
 
 const BookStore = () => {
   return (
-    <div className="w-full bg-[#d7d5d3] py-16 px-4 flex justify-center items-center">
+    <div className="w-full bg-white py-16 px-4 flex justify-center items-center">
       <div className="flex flex-col md:flex-row items-center gap-10 max-w-5xl w-full">
         
         {/* 이미지 */}
